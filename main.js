@@ -195,6 +195,25 @@ selectedUserID = ""
 selectedThing = 1;
 function showUser(userID, thing) {
     if(userID == "") {
+        for(key in business) {
+            markerDict[key].setVisible(true);
+            all++;
+            switch (business[el]["label"]) {
+                case "positive":
+                    positive++;
+                    break;
+                case "negative":
+                    negative++;
+                    break;
+                case "neutral":
+                    neutral++;
+                    break;
+            }
+        }
+        $("#clus").html("all" + " (" + all + ")");
+        $("#pos").html(positive);
+        $("#neu").html(neutral);
+        $("#neg").html(negative);
         $("#showUserStats").addClass('hide');
         $("#categoryContainer").addClass("hide");
         $("#businessContainer").addClass("hide");
@@ -211,7 +230,7 @@ function showUser(userID, thing) {
     $("#userName").html(users[userID]["name"]);
     insert = "";
     insert += '<li class="list-group-item"><span style="font-weight: bold;">popularity: </span>' + Math.round(users[userID]["popularity"] * 1000)/1000 + '</li>';
-    insert += '<li class="list-group-item"><span style="font-weight: bold;">reviw count: </span>' + users[userID]["review_count"] + '</li>';
+    insert += '<li class="list-group-item"><span style="font-weight: bold;">review count: </span>' + users[userID]["review_count"] + '</li>';
     insert += '<li class="list-group-item"><span style="font-weight: bold;">avg. stars: </span>' + users[userID]["average_stars"] + '</li>';
     insert += '<li class="list-group-item"><span style="font-weight: bold;">no. fans: </span>' + users[userID]["fans"] + '</li>';
     insert += '<li class="list-group-item"><span style="font-weight: bold;">no. friends: </span>' + users[userID]["friends"].length + '</li>';
