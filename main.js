@@ -195,6 +195,7 @@ selectedUserID = ""
 selectedThing = 1;
 function showUser(userID, thing) {
     if(userID == "") {
+        var all = 0
         for(key in business) {
             markerDict[key].setVisible(true);
             all++;
